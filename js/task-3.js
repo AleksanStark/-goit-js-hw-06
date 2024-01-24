@@ -1,79 +1,65 @@
-const sortByDescendingFriendCount = (users) =>
-  users.toSorted((a, b) => b.friends.length - a.friends.length);
+class StringBuilder {
+  #value;
+  constructor(inititalValue) {
+    this.#value = [inititalValue];
+  }
 
-console.log(
-  sortByDescendingFriendCount([
-    {
-      name: "Moore Hensley",
-      friends: ["Sharron Pace"],
-      gender: "male",
-    },
-    {
-      name: "Sharlene Bush",
-      friends: ["Briana Decker", "Sharron Pace"],
-      gender: "female",
-    },
-    {
-      name: "Ross Vazquez",
-      friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
-      gender: "male",
-    },
-    {
-      name: "Elma Head",
-      friends: ["Goldie Gentry", "Aisha Tran"],
-      gender: "female",
-    },
-    {
-      name: "Carey Barr",
-      friends: ["Jordan Sampson", "Eddie Strong"],
-      gender: "male",
-    },
-    {
-      name: "Blackburn Dotson",
-      friends: ["Jacklyn Lucas", "Linda Chapman"],
-      gender: "male",
-    },
-    {
-      name: "Sheree Anthony",
-      friends: ["Goldie Gentry", "Briana Decker"],
-      gender: "female",
-    },
-  ])
-);
-// [
-//   {
-//     name: "Ross Vazquez",
-//     friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
-//     gender: "male"
-//   },
-//   {
-//     name: "Sharlene Bush",
-//     friends: ["Briana Decker", "Sharron Pace"],
-//     gender: "female"
-//   },
-//   {
-//     name: "Elma Head",
-//     friends: ["Goldie Gentry", "Aisha Tran"],
-//     gender: "female"
-//   },
-//   {
-//     name: "Carey Barr",
-//     friends: ["Jordan Sampson", "Eddie Strong"],
-//     gender: "male"
-//   },
-//   {
-//     name: "Blackburn Dotson",
-//     friends: ["Jacklyn Lucas", "Linda Chapman"],
-//     gender: "male"
-//   },
-//   {
-//     name: "Sheree Anthony",
-//     friends: ["Goldie Gentry", "Briana Decker"],
-//     gender: "female"
-//   },
-//   {
-//     name: "Moore Hensley",
-//     friends: ["Sharron Pace"],
-//     gender: "male"
+  getValue() {
+    return this.#value.join("");
+  }
+
+  padEnd(str) {
+    this.#value.push(str);
+  }
+
+  padStart(str) {
+    this.#value.unshift(str);
+  }
+
+  padBoth(str) {
+    this.#value.push(str);
+    this.#value.unshift(str);
+  }
+}
+const builder = new StringBuilder(".");
+console.log(builder.getValue()); // "."
+builder.padStart("^");
+console.log(builder.getValue()); // "^."
+builder.padEnd("^");
+console.log(builder.getValue()); // "^.^"
+builder.padBoth("=");
+console.log(builder.getValue()); // "=^.^="
+
+// I decided to make an implementation similar to the previous one.
+
+// class StringBuilder {
+//   #value;
+//   constructor(inititalValue) {
+//     this.#value = [inititalValue];
 //   }
-// ]
+
+//   get value() {
+//     return this.#value.join("");
+//   }
+
+//   padEnd(str) {
+//     this.#value.push(str);
+//   }
+
+//   padStart(str) {
+//     this.#value.unshift(str);
+//   }
+
+//   padBoth(str) {
+//     this.#value.push(str);
+//     this.#value.unshift(str);
+//   }
+// }
+// const builder = new StringBuilder(".");
+// console.log(builder.value); // "."
+// builder.padStart("^");
+// console.log(builder.value); // "^."
+// builder.padEnd("^");
+// console.log(builder.value); // "^.^"
+// builder.padBoth("=");
+// console.log(builder.value); // "=^.^="
