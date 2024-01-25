@@ -9,7 +9,6 @@ class StringBuilder {
   }
 
   padEnd(str) {
-    const lastElement = this.#value.length - 1;
     this.#value += str;
   }
 

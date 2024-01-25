@@ -13,9 +13,9 @@ class Storage {
     const searchElement = this.#items.indexOf(itemToRemove);
     if (searchElement !== -1) {
       this.#items.splice(searchElement, 1);
-      return `${itemToRemove} removed successfully.`;
+    } else {
+      console.log("This element is not Found");
     }
-    return console.log("This element is not found");
   }
 }
 
